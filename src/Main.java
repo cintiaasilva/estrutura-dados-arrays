@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -6,7 +7,8 @@ public class Main {
     public static void main(String[] args) {
 //        System.out.println("Vetor do primeiro exercício: " + ex1());
 //        System.out.println("Matriz do segundo exercício: " + ex2());
-        System.out.println("Vetor do terceiro exercício: " + ex3());
+//        System.out.println("Vetor do terceiro exercício: " + ex3());
+//        ex4();
 
     }
 
@@ -66,5 +68,25 @@ public class Main {
         }
 
         return Arrays.toString(numeros);
+    }
+
+    public static void ex4(){
+        double[][] numeros = new double[3][3];
+        Random numeroAleatorio = new Random();
+        DecimalFormat df = new DecimalFormat("0.00");
+        double soma = 0.0;
+
+        for (int i = 0; i < numeros.length; i++) {
+            for (int j = 0; j < numeros.length; j++) {
+
+                numeros[i][j] = numeroAleatorio.nextDouble() * (50.0 - 10.0) + 10.0;
+
+                String valorFormatado = df.format(numeros[i][j]);
+                System.out.println("Valor da matriz na posição ["+ i + "][" + j + "]:" + valorFormatado);
+
+                soma += numeros[i][j];
+            }
+        }
+        System.out.println("A soma dos elementos da matriz é: " + df.format(soma));
     }
 }
