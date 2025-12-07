@@ -2,6 +2,7 @@ import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,6 +10,7 @@ public class Main {
 //        System.out.println("Matriz do segundo exercício: " + ex2());
 //        System.out.println("Vetor do terceiro exercício: " + ex3());
 //        ex4();
+        ex5();
 
     }
 
@@ -48,7 +50,7 @@ public class Main {
         for (int posicao = 0; posicao < numeros.length; posicao++) {
             numeros[posicao] = numeroAleatorio.nextInt(100 + 1);
             //Exibe os valores do vetor para consultas
-            //System.out.println("Na posição ["+(posicao+1)+"] do vetor, tem o valor: " + numeros[posicao]);
+            //System.out.println("Na posição ["+(posicao+1)+"] do vetor, tem o valor: "+ numeros[posicao]);
         }
 
         System.out.println("Digite um número inteiro e positivo para ser procurado no vetor: ");
@@ -88,5 +90,23 @@ public class Main {
             }
         }
         System.out.println("A soma dos elementos da matriz é: " + df.format(soma));
+    }
+
+    public static void ex5(){
+        int[][] numeros = new int[5][5];
+        int maiorElemento = numeros[0][0];
+
+        for (int i = 0; i < numeros.length; i++) {
+            for (int j = 0; j < numeros.length; j++) {
+                int numeroAleatorio = ThreadLocalRandom.current().nextInt(-100, 100);
+                numeros[i][j] = numeroAleatorio;
+
+                if (numeros[i][j] > maiorElemento){
+                    maiorElemento = numeros[i][j];
+                }
+                System.out.println("Valor da matriz na posição ["+ i + "][" + j + "]:" + numeros[i][j]);
+            }
+        }
+        System.out.println("O maior elemento na matriz bidimensional é: " + maiorElemento);
     }
 }
